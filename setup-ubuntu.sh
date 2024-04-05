@@ -4,7 +4,5 @@ apt-get install graphviz
 apt-get install autoconf
 apt-get install libtool
 apt-get install g++
-apt-get install ruby
-apt-get install ruby-dev
 apt-get install python
 apt-get install python-dev

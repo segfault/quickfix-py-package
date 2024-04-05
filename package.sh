@@ -1,23 +1,23 @@
-QF_VERSION=$1
+#!/usr/bin/env bash
+QF_VERSION=0.0.10
 
 rm -rf quickfix
 
-git clone --depth 1 https://github.com/quickfix/quickfix.git
+cp -r ../quickfix quickfix
 rm -rf quickfix/.git
 
-pushd quickfix/doc
-./document.sh
-popd
+# pushd quickfix/doc
+# ./document.sh
+# popd
 
-pushd quickfix
-../git2cl > ChangeLog
+pushd quickfix || exit
 ./bootstrap
-popd
+popd || exit
 
 rm -f quickfix-$QF_VERSION.tar.gz
 
 tar czvf quickfix-$QF_VERSION.tar.gz quickfix
 
-pushd quickfix
-./configure --with-python2 --with-python3 --with-ruby && make && make check
-popd
+pushd quickfix || exit
+./configure --with-python2 --with-python3 --with-openssl && make && make check
+popd || exit
