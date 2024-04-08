@@ -52,6 +52,26 @@ long_description = ""
 with open("LICENSE") as file:
     license = file.read()
 
+extra_compile_args = [
+    "-std=c++0x",
+    "-Wno-deprecated",
+    "-Wno-unused-variable",
+    "-Wno-deprecated-declarations",
+    "-Wno-uninitialized",
+    "-Wno-unused-label",
+    "-IC++/swig",
+    "-DHAVE_SSL=1",
+]
+
+# extra_link_args = []
+
+# if sys.platform == 'linux':
+#     extra_link_args.append("-L/usr/lib/aarch64-linux-gnu")
+#     extra_compile_args.append("-I/usr/include/openssl")
+# else:
+#     extra_link_args.append("-L/opt/homebrew/opt/openssl@3/lib")
+#     extra_compile_args.append("-I/opt/homebrew/opt/openssl@3/include")
+
 setup(
     name="quickfix-py",
     version="0.0.10",
@@ -81,15 +101,9 @@ setup(
             "_quickfix",
             glob.glob("C++/*.cpp"),
             include_dirs=["C++"],
-            extra_compile_args=[
-                "-std=c++0x",
-                "-Wno-deprecated",
-                "-Wno-unused-variable",
-                "-Wno-deprecated-declarations",
-                "-Wno-uninitialized",
-                "-Wno-unused-label",
-                "-IC++/swig",
-            ],
+            # extra_compile_args=extra_compile_args,
+            # extra_link_args=extra_link_args,
+            libraries=["ssl", "crypto"],
         )
     ],
 )

@@ -42,7 +42,7 @@ fi
 pushd quickfix-python || exit
 
 python3 -m build --sdist # source distribution
-# python3 -m build --wheel # wheel distribution for current platform
+python3 -m build --wheel # wheel distribution for current platform
 
 # PYTHONWARNINGS="ignore" twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
