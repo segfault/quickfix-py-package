@@ -26,13 +26,13 @@ Ensure you are using the same Python version you would use in the application wh
 pyenv uninstall 3.11.8
 ```
 
-2. Install PYthon with compilation options to use the openssl version 1.1
+2. Install Python with compilation options to use the openssl version 1.1
 
 ```
-CONFIGURE_OPTS=--with-openssl=/opt/homebrew/opt/openssl@1.1
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl@1.1/include -DHAVE_SSL=1"
-export PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA=openssl@1.1
+export CONFIGURE_OPTS=--with-openssl=/opt/homebrew/opt/openssl@3
+export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
+export PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA=openssl@3
 
 pyenv install 3.11.8
 ```

@@ -3,7 +3,7 @@ QF_VERSION=0.0.10
 
 WITH_MYSQL=${WITH_MYSQL:-0}
 
-arguments=(--with-python --with-openssl=/opt/homebrew/opt/openssl@1.1)
+arguments=(--with-python --with-openssl)
 if [ "$WITH_MYSQL" -eq 1 ]; then
     arguments+=(--with-mysql)
 fi
