@@ -1,4 +1,8 @@
+.*
+!.gitignore
 *~
 *.gz
 *.zip
+*.egg-info
 /quickfix
+build/
