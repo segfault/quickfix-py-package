@@ -32,12 +32,11 @@ rm -f quickfix-python/C++/stdafx.*
 
 cp -R quickfix/src/swig quickfix-python/C++
 
-if ! [ -d .venv ]; then
-  echo "Environment does not exist, creating ..."
-  python -m venv .venv
-  source .venv/bin/activate
-  python -m pip install build twine
-fi
+echo "Creating virtual environment..."
+rm -rf .venv
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install build twine
 
 pushd quickfix-python || exit
 

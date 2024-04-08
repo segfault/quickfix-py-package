@@ -101,7 +101,7 @@ setup(
             "_quickfix",
             glob.glob("C++/*.cpp"),
             include_dirs=["C++"],
-            # extra_compile_args=extra_compile_args,
+            extra_compile_args=extra_compile_args,
             # extra_link_args=extra_link_args,
             libraries=["ssl", "crypto"],
         )

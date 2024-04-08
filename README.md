@@ -40,8 +40,8 @@ pyenv install 3.11.8
 3. With the same Environment Variables, build the quickfix package.
 
 ```
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
 ./build.sh
 ./package-python.sh
 ```
