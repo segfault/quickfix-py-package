@@ -11,7 +11,6 @@ jobs:
         python_build: [cp311-manylinux_aarch64]
         os: [ubuntu-latest]
     env:
-      CIBW_BEFORE_ALL: 'uname -a'
       CIBW_ARCHS: aarch64
       CIBW_BUILD: ${{ matrix.python_build }}
 
@@ -28,20 +27,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: install openssl
-        run: "sudo apt-get update -y && sudo apt-get install pkg-config libssl-dev -y"          
-
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
         with:
           package-dir: quickfix-python
         env:
+          CIBW_BEFORE_ALL_LINUX: 'uname -a && ls -la && sudo apt-get update -y && sudo apt-get install pkg-config libssl-dev -y'
           CIBW_BUILD: ${{ matrix.python_build }}
 
       - uses: actions/upload-artifact@v4
         with:
           name: cibw-wheels-${{ matrix.python_build }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl  
+          path: ./wheelhouse/*.whl
 
   build-wheels-osx:
     name: Build wheels on ${{ matrix.os }}
@@ -51,9 +48,8 @@ jobs:
         python_build: [cp311-macosx_arm64]
         os: [macos-14]
     env:
-      CIBW_BEFORE_ALL: 'uname -a'
       CIBW_ARCHS: 'auto'
-      CIBW_BUILD: ${{ matrix.python_build }}      
+      CIBW_BUILD: ${{ matrix.python_build }}
 
     steps:
       - uses: actions/checkout@v4
