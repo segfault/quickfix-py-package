@@ -2,7 +2,7 @@
 
 WITH_MYSQL=${WITH_MYSQL:-0}
 WITH_POSTGRESQL=${WITH_POSTGRESQL:-0}
-DEST_DIR=${DEST_DIR:-quickfix-python}
+DEST_DIR=${DEST_DIR:-quickfix-py}
 
 rm -rf "${DEST_DIR}/C++"
 rm -rf "${DEST_DIR}/spec"
@@ -11,6 +11,7 @@ rm -rf "${DEST_DIR}/build"
 rm -f "${DEST_DIR}/LICENSE"
 rm -f "${DEST_DIR}/quickfix*.py"
 
+rm -rf quickfix
 cp quickfix/LICENSE "${DEST_DIR}"
 
 cp quickfix/src/python3/*.py "${DEST_DIR}"

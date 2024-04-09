@@ -19,24 +19,7 @@ The original package is not being maintained.
 Ensure you have g++, openssl, python-dev, autoconf, etc. (run ./setup-osx.sh if needed)
 Ensure you are using the same Python version you would use in the application when building.
 
-1. Uninstall the Python version you will use if installed:
-
-```
-pyenv uninstall 3.11.8
-```
-
-2. Install Python with compilation options to use the openssl version 1.1
-
-```
-export CONFIGURE_OPTS=--with-openssl=/opt/homebrew/opt/openssl@3
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
-export PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA=openssl@3
-
-pyenv install 3.11.8
-```
-
-3. With the same Environment Variables, build the quickfix package.
+1. Setting Environment Variables, build the quickfix package.
 
 ```
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
@@ -47,7 +30,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
 
 # On Ubuntu Linux
 
-apt install swig
+check setup-ubuntu.sh or setup-yum.sh depending on your distributions' package manager
+to see examples to install dependencies.
 
 ```
 export LDFLAGS="-L/usr/lib/aarch64-linux-gnu"
