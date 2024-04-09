@@ -14,7 +14,11 @@ rm -f "${DEST_DIR}/quickfix*.py"
 cp quickfix/LICENSE "${DEST_DIR}"
 
 cp quickfix/src/python3/*.py "${DEST_DIR}"
-cp -R quickfix/src/C++ "${DEST_DIR}"
+mkdir "${DEST_DIR}/C++"
+cp quickfix/src/C++/*.h "${DEST_DIR}/C++"
+cp quickfix/src/C++/*.hpp "${DEST_DIR}/C++"
+cp quickfix/src/C++/*.cpp "${DEST_DIR}/C++"
+cp -R quickfix/src/C++/double-conversion "${DEST_DIR}/C++"
 cp quickfix/src/python3/QuickfixPython.cpp "${DEST_DIR}/C++"
 cp quickfix/src/python3/QuickfixPython.h "${DEST_DIR}/C++"
 
@@ -25,9 +29,9 @@ touch "${DEST_DIR}/C++/config.h"
 touch "${DEST_DIR}/C++/config_windows.h"
 rm -f "${DEST_DIR}/C++/stdafx.*"
 
-cp -R quickfix/src/swig "${DEST_DIR}/C++""
+cp -R quickfix/src/swig "${DEST_DIR}/C++"
 
-# 
+#
 # echo "Creating virtual environment..."
 # rm -rf .venv
 # python -m venv .venv
