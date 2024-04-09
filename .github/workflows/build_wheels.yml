@@ -24,12 +24,12 @@ jobs:
         with:
           platforms: arm64
 
-      - name: install openssl
-        run: "sudo apt-get update -y && sudo apt-get install pkg-config libssl-dev -y"
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: install openssl
+        run: "sudo apt-get update -y && sudo apt-get install pkg-config libssl-dev -y"          
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
