@@ -1,13 +1,7 @@
 import glob
-import os
-import shutil
-import subprocess
 import sys
-from distutils.command.build import build
 from distutils.command.build_ext import build_ext
-from distutils.command.install import install
 from distutils.core import Extension, setup
-from distutils.sysconfig import get_config_vars
 
 
 class build_ext_subclass(build_ext):
@@ -48,7 +42,6 @@ for key, value in cfg_vars.items():
     if type(value) == str:
         cfg_vars[key] = value.replace("-Wstrict-prototypes", "")
 
-long_description = ""
 with open("LICENSE") as file:
     license = file.read()
 
@@ -74,7 +67,8 @@ extra_compile_args = [
 
 setup(
     name="quickfix-py",
-    version="0.0.10",
+    version="0.0.1",
+    python_requires=">=3.11",
     py_modules=[
         "quickfix",
         "quickfixt11",
@@ -91,7 +85,7 @@ setup(
     author_email="pablodcar@gmail.com",
     maintainer="Pablo Carballo",
     maintainer_email="pablodcar@gmail.com",
-    description="FIX (Financial Information eXchange) protocol implementation",
+    description="Python package for Quickfix C++, FIX (Financial Information eXchange) protocol implementation",
     url="https://github.com/pablodcar/quickfix-py-package",
     download_url="https://github.com/pablodcar/quickfix-py-package",
     license=license,
@@ -102,7 +96,6 @@ setup(
             glob.glob("C++/*.cpp"),
             include_dirs=["C++"],
             extra_compile_args=extra_compile_args,
-            # extra_link_args=extra_link_args,
             libraries=["ssl", "crypto"],
         )
     ],

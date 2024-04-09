@@ -6,9 +6,8 @@ Based on https://github.com/quickfix/quickfix-package, original author: Oren Mil
 This project is an update to run with latest changes,
 and compile and distribute a package in Python 3 with SSL support.
 
-(Ruby is not supported as in the original project.)
-
 # Why
+
 The original package is not being maintained.
 
 # Build Instructions
