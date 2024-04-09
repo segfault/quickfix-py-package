@@ -1,5 +1,4 @@
 name: Build
-description: Generates distribution Python wheels for macos and ubuntu linux
 
 on: [push, pull_request]
 
