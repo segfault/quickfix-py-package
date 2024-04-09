@@ -8,8 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # macos-13 is an intel runner, macos-14 is apple silicon
-        os: [ubuntu-latest, macos-14]
+        os: [ubuntu-latest, macos-13, macos-14]
 
     steps:
       - uses: actions/checkout@v4
@@ -21,13 +20,12 @@ jobs:
         run: python -m pip install cibuildwheel==2.17.0
 
       - name: Build wheels
-        env:
-          CIBW_BEFORE_ALL='uname -a'
-          CIBW_BUILD = "cp311-manylinux_aarch64 cp311-macosx_x86_64 cp311-macosx_universal2 cp311-macosx_arm64"      
-        with:
-          package-dir: quickfix-python
-          
         run: python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_BEFORE_ALL: 'uname -a'
+          CIBW_BUILD: "cp311-manylinux_aarch64 cp311-macosx_x86_64 cp311-macosx_universal2 cp311-macosx_arm64"
+        with:
+          package-dir: quickfix-python        
 
       - uses: actions/upload-artifact@v4
         with:
