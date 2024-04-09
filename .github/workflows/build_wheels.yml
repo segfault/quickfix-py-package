@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-latest]
     env:
       CIBW_BEFORE_ALL: 'uname -a'
-      CIBW_ARCHS: 'aarch64'
+      CIBW_ARCHS: aarch64
       CIBW_BUILD: ${{ matrix.python_build }}
 
     steps:
@@ -22,7 +22,10 @@ jobs:
         if: runner.os == 'Linux'
         uses: docker/setup-qemu-action@v3
         with:
-          platforms: all
+          platforms: arm64
+
+      - name: install openssl
+        run: "yum update -y && yum install openssl-devel"
 
       - uses: actions/setup-python@v5
         with:
@@ -34,7 +37,6 @@ jobs:
           package-dir: quickfix-python
         env:
           CIBW_BUILD: ${{ matrix.python_build }}
-          CIBW_ARCHS_LINUX: aarch64
 
       - uses: actions/upload-artifact@v4
         with:
