@@ -32,7 +32,7 @@ jobs:
         with:
           package-dir: quickfix-python
         env:
-          CIBW_BEFORE_ALL_LINUX: 'uname -a && ls -la && å./setup-yum.sh'
+          CIBW_BEFORE_ALL_LINUX: 'uname -a && ls -la && ./setup-yum.sh'
           CIBW_BUILD: ${{ matrix.python_build }}
 
       - uses: actions/upload-artifact@v4
