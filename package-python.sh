@@ -11,7 +11,6 @@ rm -rf "${DEST_DIR}/build"
 rm -f "${DEST_DIR}/LICENSE"
 rm -f "${DEST_DIR}/quickfix*.py"
 
-rm -rf quickfix
 cp quickfix/LICENSE "${DEST_DIR}"
 
 cp quickfix/src/python3/*.py "${DEST_DIR}"

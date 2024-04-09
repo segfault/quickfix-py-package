@@ -9,11 +9,12 @@ arguments=(--with-python --with-openssl)
 # fi
 
 if [ -d quickfix ]; then
-  echo "quickfix exists."
-else
-    git clone https://github.com/pablodcar/quickfix
-    rm -rf quickfix/.git
+  echo "quickfix directory already exists."
+  exit
 fi
+
+git clone https://github.com/pablodcar/quickfix
+rm -rf quickfix/.git
 
 # pushd quickfix/doc
 # ./document.sh

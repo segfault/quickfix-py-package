@@ -19,12 +19,25 @@ The original package is not being maintained.
 Ensure you have g++, openssl, python-dev, autoconf, etc. (run ./setup-osx.sh if needed)
 Ensure you are using the same Python version you would use in the application when building.
 
-1. Setting Environment Variables, build the quickfix package.
+1. Setting Environment Variables flags to enable SSL:
 
 ```
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
+```
+
+2. Build sources
+
+```
 ./build.sh
+```
+
+This step will download quickfix source code from repository
+https://github.com/pablodcar/quickfix and leave C++ and compiled objects into `quickfix` directory.
+
+3. Use the C++ source code to update the Python package
+
+```
 ./package-python.sh
 ```
 
