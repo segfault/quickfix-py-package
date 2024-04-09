@@ -409,6 +409,7 @@ static void thread_setup(void)
     pthread_mutex_init(&(lock_cs[i]), 0);
   }
 #endif
+}
 
 static void thread_cleanup(void)
 {
