@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+
 import glob
 import sys
 from distutils.command.build_ext import build_ext
 from distutils.core import Extension, setup
+import subprocess
 
 
 class build_ext_subclass(build_ext):
@@ -56,14 +59,13 @@ extra_compile_args = [
     "-DHAVE_SSL=1",
 ]
 
-# extra_link_args = []
+ldflags = subprocess.getoutput("pkg-config --libs openssl").strip().split()
+extra_link_args = ldflags
 
-# if sys.platform == 'linux':
-#     extra_link_args.append("-L/usr/lib/aarch64-linux-gnu")
-#     extra_compile_args.append("-I/usr/include/openssl")
-# else:
-#     extra_link_args.append("-L/opt/homebrew/opt/openssl@3/lib")
-#     extra_compile_args.append("-I/opt/homebrew/opt/openssl@3/include")
+if sys.platform == 'linux': # TODO: execute command  to get openssl 
+    extra_compile_args.append("-I/usr/include/openssl")
+else:
+    extra_compile_args.append("-I/opt/homebrew/opt/openssl@3/include")
 
 setup(
     name="quickfix-py",
@@ -96,6 +98,7 @@ setup(
             glob.glob("C++/*.cpp"),
             include_dirs=["C++"],
             extra_compile_args=extra_compile_args,
+            extra_link_args=extra_link_args,
             libraries=["ssl", "crypto"],
         )
     ],
