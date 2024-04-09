@@ -410,13 +410,6 @@ static void thread_setup(void)
   }
 #endif
 
-#ifndef _MSC_VER
-  CRYPTO_set_id_callback((unsigned long (*)(void))thread_id_func);
-#endif
-  CRYPTO_set_locking_callback(
-      (void (*)(int, int, const char *, int))locking_callback);
-}
-
 static void thread_cleanup(void)
 {
 
