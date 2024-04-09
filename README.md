@@ -21,9 +21,18 @@ Ensure you are using the same Python version you would use in the application wh
 
 1. Setting Environment Variables flags to enable SSL:
 
+On MacOS:
+
 ```
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include -DHAVE_SSL=1"
+```
+
+On Linux:
+
+```
+export LDFLAGS="-L/usr/lib/aarch64-linux-gnu"
+export CPPFLAGS="-I/usr/include/openssl -DHAVE_SSL=1"
 ```
 
 2. Build sources
@@ -41,12 +50,41 @@ https://github.com/pablodcar/quickfix and leave C++ and compiled objects into `q
 ./package-python.sh
 ```
 
-# On Ubuntu Linux
+# Publishing
 
-check setup-ubuntu.sh or setup-yum.sh depending on your distributions' package manager
-to see examples to install dependencies.
+1. Create and activate a virtual environment to install distribution dependencies:
 
 ```
-export LDFLAGS="-L/usr/lib/aarch64-linux-gnu"
-export CPPFLAGS="-I/usr/include/openssl -DHAVE_SSL=1"
+python -m pip install --upgrade build twine
 ```
+
+2. Create Distribution files
+
+```
+python -m build
+```
+
+This step will leave a `dist/` directory with .tar.gz file (source distribution) and a .whl file (a built distribution). Built distribution depends on the OS, architecture, Python version.
+
+e.g.
+```
+ls -1 dist
+quickfix-py-0.0.1.tar.gz
+quickfix_py-0.0.1-cp311-cp311-macosx_14_0_arm64.whl
+```
+
+3. Publish to PyPi (manual)
+
+If you are going to test how the package looks like, use TestPyPi https://test.pypi.org/account/register/:
+
+    * Follow the instructions to create a token: https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-the-distribution-archives,
+    * Configure the token on your local environment, e.g. ~/.pypirc
+
+
+```
+python3 -m twine upload --repository testpypi dist/*
+```
+
+4. Publish to PyPi (Github actions)
+
+
