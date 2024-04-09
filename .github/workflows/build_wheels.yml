@@ -12,13 +12,12 @@ jobs:
         os: [ubuntu-latest]
     env:
       CIBW_BEFORE_ALL: 'uname -a'
-      CIBW_ARCHS: 'auto'
+      CIBW_ARCHS: 'aarch64'
       CIBW_BUILD: ${{ matrix.python_build }}
 
     steps:
       - uses: actions/checkout@v4
 
-      # Used to host cibuildwheel
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -31,19 +30,19 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: cibw-wheels-${{ matrix.python_build }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+          path: ./wheelhouse/*.whl  
 
   build-wheels-osx:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python_build: [cp311-manylinux_aarch64]
-        os: [ubuntu-latest]
+        python_build: [cp311-macosx_arm64]
+        os: [macos-14]
     env:
       CIBW_BEFORE_ALL: 'uname -a'
       CIBW_ARCHS: 'auto'
-      CIBW_BUILD: ${{ matrix.python_build }}
+      CIBW_BUILD: ${{ matrix.python_build }}      
 
     steps:
       - uses: actions/checkout@v4
