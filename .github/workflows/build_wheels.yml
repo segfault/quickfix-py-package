@@ -14,13 +14,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # Used to host cibuildwheel
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
         env:
           CIBW_BEFORE_ALL: 'uname -a'
-          CIBW_BUILD: "cp311-manylinux_aarch64 cp311-macosx_x86_64 cp311-macosx_universal2 cp311-macosx_arm64"
+          CIBW_BUILD: cp311-manylinux_aarch64 cp311-macosx_*
         with:
           package-dir: quickfix-python
 
