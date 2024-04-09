@@ -25,7 +25,7 @@ jobs:
           platforms: arm64
 
       - name: install openssl
-        run: "apt update -y && apt install pkg-confi libssl-dev -y"
+        run: "sudo apt-get update -y && sudo apt-get install pkg-confi libssl-dev -y"
 
       - uses: actions/setup-python@v5
         with:
