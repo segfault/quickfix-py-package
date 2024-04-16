@@ -90,6 +90,8 @@ setup(
     description="Python package for Quickfix C++, FIX (Financial Information eXchange) protocol implementation",
     url="https://github.com/pablodcar/quickfix-py-package",
     download_url="https://github.com/pablodcar/quickfix-py-package",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     license=license,
     cmdclass={"build_ext": build_ext_subclass},
     ext_modules=[
