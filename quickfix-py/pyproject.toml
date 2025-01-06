@@ -57,7 +57,7 @@ QUICKFIX_EXAMPLES = false
 QUICKFIX_TESTS = false
 
 [tool.cibuildwheel]
-build-frontend = "build"
+build-frontend = "build[uv]"
 
 [tool.cibuildwheel.linux]
 manylinux-x86_64-image = "quay.io/pypa/manylinux_2_34_x86_64"

@@ -9,7 +9,7 @@ fi
 YUM_BIN=$(which yum)
 if [ -x "$YUM_BIN" ]; then
   yum update -y
-  yum install openssl-devel cmake ninja swig -y
+  yum install openssl-devel cmake ninja-build swig -y
 
   echo "Config libs: ${pkg-config --libs openssl}"
 fi
@@ -17,7 +17,7 @@ fi
 APT_GET_BIN=$(which apt-get)
 if [ -x "$APT_GET_BIN" ]; then
   apt-get update -y
-  apt-get install libssl-dev swig cmake ninja -y
+  apt-get install libssl-dev swig cmake ninja-build -y
 
   echo "Config libs: ${pkg-config --libs openssl}"
 fi
