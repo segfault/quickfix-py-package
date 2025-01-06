@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: 'https://github.com/segfault/quickfix-cpp.git'
+          repository: 'segfault/quickfix-cpp'
           ref: 'py-update'
           path: 'quickfix'
       - name: Setup links for build
@@ -70,7 +70,7 @@ jobs:
     - uses: actions/checkout@v4
       name: 'Checkout Quickfix Code'
       with:
-        repository: 'https://github.com/segfault/quickfix-cpp.git'
+        repository: 'segfault/quickfix-cpp'
         ref: 'py-update'
         path: 'quickfix'
     - name: Setup links for build
