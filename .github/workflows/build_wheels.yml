@@ -16,7 +16,7 @@ jobs:
     env:
       CIBW_ARCHS: auto64
       CIBW_BUILD: ${{ matrix.python-version }}
-      CIBW_SKIP: cp36-* cp37-* cp38-* cp39-* cp310-* pp* *-win32 *-manylinux_i686
+      CIBW_SKIP: cp36-* cp37-* cp38-* cp39-* cp310-* pp* *-win32 *i686
 
     steps:
       - uses: actions/checkout@v4
