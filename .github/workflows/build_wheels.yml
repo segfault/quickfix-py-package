@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11", "3.12", "3.13"]
-        # macos-13 is an intel runner, macos-14 is apple silicon
-        os: [ubuntu-latest, macos-13, macos-14 macos-latest windows-latest]
+        # macos-13 is an intel runner, macos-latest is apple silicon
+        os: [ubuntu-latest, macos-13, macos-latest windows-latest]
         cmake-version: ["3.28.x"]
 
     env:
@@ -20,6 +20,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'https://github.com/segfault/quickfix-cpp.git'
+          ref: 'py-update'
+          path: 'quickfix'
+      - name: Setup links for build
+        run: |
+          ln -s quickfix quickfix-py/C++
 
       - name: Set up QEMU
         if: runner.os == 'Linux'
@@ -59,9 +67,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Optional, use if you use setuptools_scm
-        submodules: true  # Optional, use if you have submodules
+        repository: 'https://github.com/segfault/quickfix-cpp.git'
+        ref: 'py-update'
+        path: 'quickfix'
+    - name: Setup links for build
+      run: |
+        ln -s quickfix quickfix-py/C++
 
     - uses: actions/setup-python@v5
       with:
