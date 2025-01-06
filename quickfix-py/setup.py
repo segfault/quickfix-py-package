@@ -49,7 +49,7 @@ with open("LICENSE") as file:
     license = file.read()
 
 extra_compile_args = [
-    "-std=c++0x",
+    "-std=c++17",
     "-Wno-deprecated",
     "-Wno-unused-variable",
     "-Wno-deprecated-declarations",
@@ -69,7 +69,7 @@ else:
 
 setup(
     name="quickfix-py",
-    version="0.0.2",
+    version="0.0.3",
     python_requires=">=3.11",
     py_modules=[
         "quickfix",
@@ -84,12 +84,12 @@ setup(
         "quickfix50sp2",
     ],
     data_files=[("share/quickfix", glob.glob("spec/FIX*.xml"))],
-    author_email="pablodcar@gmail.com",
-    maintainer="Pablo Carballo",
-    maintainer_email="pablodcar@gmail.com",
+    author_email="segfault@hasno.info",
+    maintainer="Mark Guzman",
+    maintainer_email="segfault@hasno.info",
     description="Python package for Quickfix C++, FIX (Financial Information eXchange) protocol implementation",
-    url="https://github.com/pablodcar/quickfix-py-package",
-    download_url="https://github.com/pablodcar/quickfix-py-package",
+    url="https://github.com/segfault/quickfix-py-package",
+    download_url="https://github.com/segfault/quickfix-py-package",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     license=license,

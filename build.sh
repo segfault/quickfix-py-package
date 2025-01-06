@@ -13,7 +13,7 @@ if [ -d quickfix ]; then
   exit
 fi
 
-git clone https://github.com/pablodcar/quickfix
+git clone https://github.com/segfault/quickfix-cpp
 rm -rf quickfix/.git
 
 # pushd quickfix/doc
