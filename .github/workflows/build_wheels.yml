@@ -27,7 +27,7 @@ jobs:
           path: 'quickfix'
       - name: Setup links for build
         run: |
-          ln -s quickfix quickfix-py/C++
+          ln -s ../quickfix quickfix-py/C++
           ls -lah
           ls -lah quickfix-py
 
@@ -76,7 +76,7 @@ jobs:
         path: 'quickfix'
     - name: Setup links for build
       run: |
-        ln -s quickfix quickfix-py/C++
+        ln -s ../quickfix quickfix-py/C++
 
     - uses: actions/setup-python@v5
       with:
