@@ -1,0 +1,71 @@
+[project]
+name = "quickfix-segy"
+version = "16.0.1"
+description = "Python package for Quickfix C++, FIX (Financial Information eXchange) protocol implementation"
+authors = [{name = "Oren Miller", email="oren@quickfixengine.org"}]
+maintainers = [
+  {name = "Oren Miller", email="oren@quickfixengine.org"},
+  {name = "Mark Guzman", email="segfault@hasno.info"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+]
+license = {file = "C++/LICENSE"}
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: BSD License',
+    'Programming Language :: C++',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: Implementation :: CPython',
+    'Topic :: Software Development',
+    'Topic :: Finance',
+    'Typing :: Typed',
+    'Operating System :: Microsoft :: Windows',
+    'Operating System :: POSIX',
+    'Operating System :: Unix',
+    'Operating System :: MacOS',
+]
+
+[project.urls]
+homepage = "https://quickfixengine.org"
+documentation = "https://quickfixengine.org"
+source = "https://github.com/segfault/quickfix-cpp"
+download = "https://pypi.org/project/quickfix-segy/#files"
+
+[build-system]
+requires = ["scikit-build-core"]
+build-backend = "scikit_build_core.build"
+
+[tool.scikit-build]
+cmake.source-dir = "./C++"
+ninja.make-fallback = true
+sdist.cmake = true
+sdist.reproducible = true
+sdist.exclude = [ ".venv", "CMakeCache.txt"]
+
+[tool.scikit-build.cmake.define]
+HAVE_PYTHON = true
+HAVE_SSL = true
+QUICKFIX_EXAMPLES = false
+QUICKFIX_TESTS = false
+
+[tool.cibuildwheel]
+build-frontend = "build"
+
+[tool.cibuildwheel.linux]
+manylinux-x86_64-image = "manylinux_2_34"
+manylinux-aarch64-image = "manylinux_2_34"
+musllinux-x86_64-image = "musllinux_1_2"
+musllinux-aarch64-image = "musllinux_1_2"
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.6.2",
+]
