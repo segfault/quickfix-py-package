@@ -11,7 +11,7 @@ jobs:
         python-build: ["cp311-*", "cp312-*", "cp313-*"]
         # macos-13 is an intel runner, macos-latest is apple silicon
         #os: [ubuntu-latest, macos-13, macos-latest, windows-latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         cmake-version: ["3.28.x"]
 
     env:
@@ -121,11 +121,6 @@ jobs:
         with:
           path: dist
           merge-multiple: true
-
-      - name: Generate artifact attestations
-        uses: actions/attest-build-provenance@v1.4.4
-        with:
-          subject-path: "dist/*"
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
