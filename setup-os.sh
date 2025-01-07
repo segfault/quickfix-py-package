@@ -23,3 +23,11 @@ if [ -x "$APT_GET_BIN" ]; then
 
   echo "Config libs: ${pkg-config --libs openssl}"
 fi
+
+APK_BIN=$(which apk)
+if [ -x "$APK_BIN" ]; then
+  apk update
+  apk add openssl-dev swig cmake ninja-build python3-dev
+
+  echo "Config libs: ${pkg-config --libs openssl}"
+fi
