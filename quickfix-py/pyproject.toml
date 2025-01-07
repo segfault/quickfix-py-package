@@ -40,7 +40,7 @@ source = "https://github.com/segfault/quickfix-cpp"
 download = "https://pypi.org/project/quickfix-segy/#files"
 
 [build-system]
-requires = ["scikit-build-core", "uv", "wheel", "build"]
+requires = ["scikit-build-core[rich,pyproject]", "uv", "wheel", "build"]
 build-backend = "scikit_build_core.build"
 
 [tool.scikit-build]
