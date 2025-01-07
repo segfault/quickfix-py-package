@@ -100,7 +100,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: cibw-sdist
-        path: dist/*.tar.gz
+        path: quickfix-py/dist/*.tar.gz
 
   upload_all:
     name: Publish to PyPI
@@ -119,6 +119,11 @@ jobs:
         with:
           path: dist
           merge-multiple: true
+
+      - name: Generate artifact attestations
+        uses: actions/attest-build-provenance@v1.4.4
+        with:
+          subject-path: "dist/*"
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
