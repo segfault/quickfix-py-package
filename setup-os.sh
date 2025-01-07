@@ -4,6 +4,8 @@ BREW_BIN=$(which brew)
 if [ -x "$BREW_BIN" ]; then
   brew update
   brew install autoconf libtool swig cmake ninja openssl@1.1
+  pip install --upgrade pip
+  pip install build uv
 fi
 
 YUM_BIN=$(which yum)
@@ -12,8 +14,6 @@ if [ -x "$YUM_BIN" ]; then
   yum install openssl-devel cmake ninja-build swig python3-devel -y
 
   echo "Config libs: ${pkg-config --libs openssl}"
-  ls -lah /usr/include
-  ls -lah /usr/local/python
 fi
 
 APT_GET_BIN=$(which apt-get)
@@ -22,6 +22,4 @@ if [ -x "$APT_GET_BIN" ]; then
   apt-get install libssl-dev swig cmake ninja-build python3-dev -y
 
   echo "Config libs: ${pkg-config --libs openssl}"
-  ls -lah /usr/include
-  ls -lah /usr/local/python
 fi
