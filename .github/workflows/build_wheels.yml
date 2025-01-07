@@ -59,7 +59,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.python_build }}-${{ strategy.job-index }}
+          name: cibw-wheels-${{ matrix.os }}-{{ matrix.python-build }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
 
   make_sdist:
