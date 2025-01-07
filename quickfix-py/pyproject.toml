@@ -55,6 +55,7 @@ HAVE_PYTHON = true
 HAVE_SSL = true
 QUICKFIX_EXAMPLES = false
 QUICKFIX_TESTS = false
+QUICKFIX_SHARED_LIBS = false
 
 [tool.cibuildwheel]
 build-frontend = "build[uv]"
