@@ -45,6 +45,7 @@ build-backend = "scikit_build_core.build"
 
 [tool.scikit-build]
 cmake.source-dir = "./C++"
+wheel.exclude = [ '*.h', 'CMakeFiles' ]
 ninja.make-fallback = true
 sdist.cmake = true
 sdist.reproducible = true
@@ -56,6 +57,7 @@ HAVE_SSL = true
 QUICKFIX_EXAMPLES = false
 QUICKFIX_TESTS = false
 QUICKFIX_SHARED_LIBS = false
+IS_PYTHON_PACKAGE_BUILD = true
 
 [tool.cibuildwheel]
 build-frontend = "build[uv]"
