@@ -108,3 +108,5 @@ jobs:
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        env:
+          TWINE_REPOSITORY_URL: https://pypi.org/p/quickfix-segy
