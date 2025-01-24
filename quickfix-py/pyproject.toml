@@ -56,7 +56,6 @@ HAVE_PYTHON = true
 HAVE_SSL = true
 QUICKFIX_EXAMPLES = false
 QUICKFIX_TESTS = false
-QUICKFIX_SHARED_LIBS = false
 IS_PYTHON_PACKAGE_BUILD = true
 
 [tool.cibuildwheel]
