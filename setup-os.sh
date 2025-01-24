@@ -4,6 +4,7 @@ BREW_BIN=$(which brew)
 if [ -x "$BREW_BIN" ]; then
   brew update
   brew install autoconf libtool swig cmake ninja openssl@1.1
+  ln -s $(dirname $(readlink -f $(which python3)))/python3-config $(dirname $(which python3))/python3-config # per https://github.com/pypa/cibuildwheel/issues/2021
   pip install --upgrade pip
   pip install build uv
 fi
