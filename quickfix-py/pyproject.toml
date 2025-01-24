@@ -1,5 +1,5 @@
 [project]
-name = "quickfix"
+name = "quickfix-segy"
 version = "1.16.1"
 description = "Python package for Quickfix C++, FIX (Financial Information eXchange) protocol implementation"
 authors = [{name = "Oren Miller", email="oren@quickfixengine.org"}]
